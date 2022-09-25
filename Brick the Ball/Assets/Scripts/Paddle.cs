@@ -1,42 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Paddle : MonoBehaviour
-{
-    private Rigidbody2D _rigidbody;
+{    
     private Vector2 _direction;
-    [SerializeField] private float _speed = 30f;
+    [SerializeField] private float _speed = 500f;
     [SerializeField] private float _maxAngleBounce = 75;
+    
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        
+    }
+
+    public void ResetPaddle()
+    {
+        transform.position = new Vector2(0f, transform.position.y);
     }
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= -15.28f)
         {
-            _direction = Vector2.left;
+            transform.position = transform.position + new Vector3(-1, 0, 0) * _speed * Time.deltaTime;
         }
-        else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) && transform.position.x <= 15.28f)
         {
-            _direction = Vector2.right;
+            transform.position = transform.position + new Vector3(1, 0, 0) * _speed * Time.deltaTime;
         }
         else
         {
             _direction = Vector2.zero;
         }
-    }
 
-    private void FixedUpdate()
-    {
-        if(_direction != Vector2.zero)
-        {
-            _rigidbody.AddForce(_direction * _speed);
-        }
-    }
+       
+    } 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
