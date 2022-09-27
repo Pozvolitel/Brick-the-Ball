@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Bricks[] bricks { get; private set; }
     [SerializeField] private GameObject _prefapBall;
 
-    public List<GameObject> BallObj = new List<GameObject>();
+    
     
     public int Level = 1;
     public int Score = 0;
@@ -88,24 +88,16 @@ public class GameManager : MonoBehaviour
 
     public void Miss()
     {
-        
-            if (BallObj.Count <= 0)
-            {
-                this.Lives--;
+        this.Lives--;
 
-                if (Lives > 0)
-                {
-                    ResetLevel();
-                }
-                else
-                {
-                    GameOver();
-                }
-                return;
-
-            }
-        
-        
-
+        if (Lives > 0)
+        {
+             ResetLevel();
+        }
+        else
+        {
+            GameOver();
+        }
+        return;
     }
 }

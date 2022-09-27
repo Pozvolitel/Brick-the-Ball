@@ -9,6 +9,7 @@ public class Bricks : MonoBehaviour
     public bool unbreakable;
     public int points = 100;
     [SerializeField] private GameObject _prefabBonus;
+    private bool isBonus = false;
     
 
     private void Awake()
@@ -52,6 +53,7 @@ public class Bricks : MonoBehaviour
             this.gameObject.SetActive(false);
             if(RandomHit(10))
             {
+                isBonus = true;
                 Instantiate(_prefabBonus, this.transform.position, Quaternion.identity);
             }
         }
@@ -70,6 +72,10 @@ public class Bricks : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             Hit();
+            if(isBonus)
+            {
+                FindObjectOfType<Bonus>().BallPosition = collision.transform;
+            }
         }
     }
 }

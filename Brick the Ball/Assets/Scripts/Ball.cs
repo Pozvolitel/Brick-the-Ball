@@ -7,32 +7,39 @@ public class Ball : MonoBehaviour
     public Rigidbody2D _rigidbody;
     [SerializeField] private float _speed = 300f;
     private int isWall = 1;
-
+    private Vector2 force;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         
         ResetBall();
-        FindObjectOfType<GameManager>().BallObj.Add(gameObject);
+        FindObjectOfType<MissZone>().BallObj.Add(gameObject);
     }
 
     private void OnDestroy()
     {
-        
-        FindObjectOfType<GameManager>().Miss();
-        FindObjectOfType<GameManager>().BallObj.Remove(gameObject);
+        //FindObjectOfType<MissZone>().BallObj.Remove(gameObject);
     }
 
     public void ResetBall()
     {
-        transform.position = Vector2.zero;
-        _rigidbody.velocity = Vector2.zero;
-        Invoke(nameof(SetTrajectory), 1f);
+        if (FindObjectOfType<MissZone>().BallObj.Count <= 0)
+        {
+            transform.position = Vector2.zero;
+            _rigidbody.velocity = Vector2.zero;
+            Invoke(nameof(SetTrajectory), 1f);
+        }
+        else
+        {
+            force.x = Random.Range(-1f, 1f);
+            force.y = Random.Range(-1f, 1f);
+            _rigidbody.AddForce(force.normalized * _speed);
+        }
     }
 
    private void SetTrajectory()
     {
-        Vector2 force = Vector2.zero;
+        force = Vector2.zero;
         force.x = Random.Range(-1f, 1f);
         force.y = -1f;
         _rigidbody.AddForce(force.normalized * _speed);

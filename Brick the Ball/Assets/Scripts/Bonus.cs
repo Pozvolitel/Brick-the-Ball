@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
-    private GameObject _prefapBall;
-    private Transform _ballPosition;
+    private GameObject _prefabBall;
+    public Transform BallPosition;
 
     private void Start()
     {
-        _prefapBall = GameObject.FindGameObjectWithTag("Ball");
+        _prefabBall = GameObject.FindGameObjectWithTag("Ball");
     }
 
     private void InstationPrefab()
     {
-        _ballPosition = _prefapBall.transform;
         for (int i = 0; i < 3; i++)
         {
-            Instantiate(_prefapBall, _ballPosition.position, Quaternion.identity);
+            Instantiate(_prefabBall, BallPosition.position, Quaternion.identity);
         }               
     }
 
