@@ -52,10 +52,13 @@ public class GameManager : MonoBehaviour
 
     private void ResetLevel()
     {
-        //this.ball.ResetBall();
         Instantiate(_prefapBall, _prefapBall.transform.position, Quaternion.identity);
         this.paddle.ResetPaddle();
-        
+        if(FindObjectOfType<Bonus>() != null)
+        {
+            var bonus = FindObjectOfType<Bonus>();
+            Destroy(bonus.gameObject);
+        }        
     }
 
     public void Hit(Bricks brick)

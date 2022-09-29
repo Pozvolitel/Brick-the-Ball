@@ -7,12 +7,6 @@ public class Paddle : MonoBehaviour
     [SerializeField] private float _speed = 500f;
     [SerializeField] private float _maxAngleBounce = 75;
     
-
-    private void Start()
-    {
-        
-    }
-
     public void ResetPaddle()
     {
         transform.position = new Vector2(0f, transform.position.y);
@@ -31,9 +25,7 @@ public class Paddle : MonoBehaviour
         else
         {
             _direction = Vector2.zero;
-        }
-
-       
+        }       
     } 
 
     private void OnCollisionEnter2D(Collision2D collision)

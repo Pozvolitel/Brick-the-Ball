@@ -9,10 +9,16 @@ public class MissZone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
+            RemoveObj(collision.gameObject);
             Destroy(collision.gameObject);
-        }
-        
+        }        
     }
+
+    private void RemoveObj(GameObject Ball)
+    {
+        BallObj.Remove(Ball);
+    }
+
     private void Update()
     {
         if (BallObj.Count <= 0)

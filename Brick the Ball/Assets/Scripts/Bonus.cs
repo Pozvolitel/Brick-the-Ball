@@ -1,19 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
     private GameObject _prefabBall;
     public Transform BallPosition;
+    [SerializeField] private GameObject _prefabMagnitude;
 
     private void Start()
     {
         _prefabBall = GameObject.FindGameObjectWithTag("Ball");
     }
 
-    private void InstationPrefab()
+    private void RandomBonus()
     {
+        var random = Random.Range(1, 20);
+
+        if (random > 10) InstationPrefabBall();
+        else InstationPrefabMagnitude();
+    }
+
+
+    private void InstationPrefabMagnitude()
+    {
+        Instantiate(_prefabMagnitude);
+    }
+
+    private void InstationPrefabBall()
+    {
+        if (!BallPosition) BallPosition.position = Vector2.zero;
+
         for (int i = 0; i < 3; i++)
         {
             Instantiate(_prefabBall, BallPosition.position, Quaternion.identity);
@@ -24,7 +39,7 @@ public class Bonus : MonoBehaviour
     {
         if(collision.transform.name == "Paddle")
         {
-            InstationPrefab();
+            RandomBonus();
             Destroy(gameObject);
         }
     }

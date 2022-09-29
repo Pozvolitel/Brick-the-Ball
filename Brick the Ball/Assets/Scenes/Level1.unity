@@ -4672,7 +4672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9f8c85a1276604d86a9111d04110ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ball: []
   BallObj: []
 --- !u!1001 &3041939882516846544
 PrefabInstance:
@@ -4695,7 +4694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3041939881933042742, guid: dbcf31fce94bdb640b1d1775cf478838, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3041939881933042742, guid: dbcf31fce94bdb640b1d1775cf478838, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4831,8 +4830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 15.2
   _maxAngleBounce: 75
---- !u!68 &6241459051064392396
-EdgeCollider2D:
+--- !u!61 &6241459051064392396
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4845,13 +4844,15 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: -0.49111557}
-  - {x: -0.39802492, y: 0.51094246}
-  - {x: 0.39253044, y: 0.5049801}
-  - {x: 0.49781734, y: -0.46928978}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
