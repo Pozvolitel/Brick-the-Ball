@@ -146,5 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e643e5f89730c4cac815baa64921ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallPosition: {fileID: 0}
+  _prefabBall: {fileID: 3041939881933042738, guid: dbcf31fce94bdb640b1d1775cf478838, type: 3}
+  BallPosition: {x: 0, y: 0}
   _prefabMagnitude: {fileID: 8056027484805426615, guid: d640be98bb069f14392db0f87c7e3b69, type: 3}
+  _scalePrefab: {fileID: 9009753237481023778, guid: 82ec5ac9a41a1d641b237e6ac8259319, type: 3}
+  _flyPaddle: {fileID: 3747517166947014463, guid: 9e063a5db0522eb488efbf6d8a160afa, type: 3}

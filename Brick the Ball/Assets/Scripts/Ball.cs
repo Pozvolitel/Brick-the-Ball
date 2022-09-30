@@ -9,14 +9,17 @@ public class Ball : MonoBehaviour
     private int isWall = 1;
     private Vector2 _force;
     public bool IsPaddle;
+    private MagnitBonus _magnit;
    
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();       
         ResetBall();
         FindObjectOfType<MissZone>().BallObj.Add(gameObject);
+        _magnit = FindObjectOfType<MagnitBonus>();
+        FindObjectOfType<Canvas>().Level = FindObjectOfType<GameManager>().Level;
+        FindObjectOfType<Canvas>().Lives = FindObjectOfType<GameManager>().Lives;
     }
-    
 
     public void ResetBall()
     {
@@ -44,6 +47,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
+
         if (collision.gameObject.tag == "Wall")
         {
             isWall++;

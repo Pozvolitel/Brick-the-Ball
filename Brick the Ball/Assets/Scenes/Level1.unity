@@ -2715,7 +2715,7 @@ GameObject:
   - component: {fileID: 1088117891}
   m_Layer: 0
   m_Name: WallUp
-  m_TagString: Wall
+  m_TagString: Bricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

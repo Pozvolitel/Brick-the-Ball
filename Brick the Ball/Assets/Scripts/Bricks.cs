@@ -62,9 +62,7 @@ public class Bricks : MonoBehaviour
             this.SpriteRend.color = this.states[this.health - 1];
         }
 
-        FindObjectOfType<GameManager>().Hit(this);
-        GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>().HitScore();
-        
+        FindObjectOfType<GameManager>().Hit(this);        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -74,7 +72,21 @@ public class Bricks : MonoBehaviour
             Hit();
             if(isBonus)
             {
-                FindObjectOfType<Bonus>().BallPosition = collision.transform;
+                Vector2 ballPosition = collision.transform.position;
+                FindObjectOfType<Bonus>().BallPosition = ballPosition;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "FlyPaddle")
+        {
+            Hit();
+            if (isBonus)
+            {
+                Vector2 ballPosition = collision.transform.position;
+                FindObjectOfType<Bonus>().BallPosition = ballPosition;
             }
         }
     }

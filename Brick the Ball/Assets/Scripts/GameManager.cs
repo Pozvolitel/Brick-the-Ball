@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,10 +9,7 @@ public class GameManager : MonoBehaviour
     public Bricks[] bricks { get; private set; }
     [SerializeField] private GameObject _prefapBall;
 
-    
-    
     public int Level = 1;
-    public int Score = 0;
     public int Lives = 3;
 
     private void Awake()
@@ -30,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
-        this.Score = 0;
         this.Lives = 3;
         
         LoadLevel(1);
@@ -39,15 +34,14 @@ public class GameManager : MonoBehaviour
     private void LoadLevel(int Level)
     {
         this.Level = Level;
-
-        SceneManager.LoadScene("Level" + Level);
+        SceneManager.LoadScene("Level" + Level);        
     }
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
         this.ball = FindObjectOfType<Ball>();
         this.paddle = FindObjectOfType<Paddle>();
-        this.bricks = FindObjectsOfType<Bricks>();        
+        this.bricks = FindObjectsOfType<Bricks>();
     }
 
     private void ResetLevel()
@@ -63,12 +57,9 @@ public class GameManager : MonoBehaviour
 
     public void Hit(Bricks brick)
     {
-        this.Score += brick.points;
-        
-
         if (Cleared())
         {
-            LoadLevel(this.Level + 1);
+            LoadLevel(this.Level + 1);            
         }
     }
 
@@ -92,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void Miss()
     {
         this.Lives--;
-
+        
         if (Lives > 0)
         {
              ResetLevel();

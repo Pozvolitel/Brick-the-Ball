@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Canvas
   - Ball
+  - FlyPaddle
   layers:
   - Default
   - TransparentFX

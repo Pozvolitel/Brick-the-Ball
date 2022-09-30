@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class MagnitBonus : MonoBehaviour
 {
-    [SerializeField] private Ball[] _ball;
+    [SerializeField] private Ball[] _ball = new Ball[100];
     private Paddle _paddle;
-    private float _time = 20f;
+    public float Timer = 20f;
     private float _speed = 50f;
     private SpriteRenderer _spriteBall;
+    private TrailRenderer trailWhite;
+    private TrailRenderer trailRed;
 
     private void Start()
     {
@@ -15,9 +17,9 @@ public class MagnitBonus : MonoBehaviour
 
     private void Update()
     { 
-        _time -= Time.deltaTime;
+        Timer -= Time.deltaTime;
         _ball = FindObjectsOfType<Ball>();
-        if (_time > 0)
+        if (Timer > 0)
         {
             if (_ball.Length > 0)
             {
@@ -27,6 +29,10 @@ public class MagnitBonus : MonoBehaviour
                     {
                         _spriteBall = item.GetComponent<SpriteRenderer>();
                         _spriteBall.color = Color.red;
+                        trailWhite = item.transform.GetChild(0).GetComponent<TrailRenderer>();
+                        trailRed = item.transform.GetChild(1).GetComponent<TrailRenderer>();
+                        trailWhite.enabled = false;
+                        trailRed.enabled = true;
                         item.transform.position = Vector3.MoveTowards(item.transform.position, _paddle.transform.position, _speed * Time.deltaTime);
                     }
                 }
@@ -34,7 +40,16 @@ public class MagnitBonus : MonoBehaviour
         }
         else
         {
-            _spriteBall.color = Color.white;
+            foreach (var item in _ball)
+            {
+                _spriteBall = item.GetComponent<SpriteRenderer>();
+                _spriteBall.color = Color.white;
+                trailWhite = item.transform.GetChild(0).GetComponent<TrailRenderer>();
+                trailRed = item.transform.GetChild(1).GetComponent<TrailRenderer>();
+                trailWhite.enabled = true;
+                trailRed.enabled = false;
+            }
+            
             Destroy(gameObject);
         }
     }

@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefapBall: {fileID: 3041939881933042738, guid: dbcf31fce94bdb640b1d1775cf478838, type: 3}
-  BallObj: []
   Level: 1
   Score: 0
   Lives: 3

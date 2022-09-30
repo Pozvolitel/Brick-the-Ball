@@ -23,7 +23,6 @@ public class MissZone : MonoBehaviour
     {
         if (BallObj.Count <= 0)
         {
-            Debug.Log("+");
             FindObjectOfType<GameManager>().Miss();
         }
     }
