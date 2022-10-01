@@ -10,6 +10,7 @@ TagManager:
   - Canvas
   - Ball
   - FlyPaddle
+  - Timer
   layers:
   - Default
   - TransparentFX

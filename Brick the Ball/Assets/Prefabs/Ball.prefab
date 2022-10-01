@@ -281,6 +281,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 0}
   _speed: 300
   IsPaddle: 0
+  _particle: {fileID: 0}
 --- !u!1 &7350751785795146547
 GameObject:
   m_ObjectHideFlags: 0

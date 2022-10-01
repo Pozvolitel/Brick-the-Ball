@@ -14,8 +14,6 @@ public class Paddle : MonoBehaviour
 
     private void Update()
     {
-        //FindObjectOfType<Canvas>().Level = FindObjectOfType<GameManager>().Level;
-        //FindObjectOfType<Canvas>().Lives = FindObjectOfType<GameManager>().Lives;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= -15.28f)
         {
             transform.position = transform.position + new Vector3(-1, 0, 0) * _speed * Time.deltaTime;

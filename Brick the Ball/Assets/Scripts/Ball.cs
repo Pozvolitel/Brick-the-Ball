@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 [SerializeField]
 public class Ball : MonoBehaviour
@@ -10,15 +9,13 @@ public class Ball : MonoBehaviour
     private Vector2 _force;
     public bool IsPaddle;
     private MagnitBonus _magnit;
-   
+     
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();       
         ResetBall();
         FindObjectOfType<MissZone>().BallObj.Add(gameObject);
-        _magnit = FindObjectOfType<MagnitBonus>();
-        FindObjectOfType<Canvas>().Level = FindObjectOfType<GameManager>().Level;
-        FindObjectOfType<Canvas>().Lives = FindObjectOfType<GameManager>().Lives;
+        _magnit = FindObjectOfType<MagnitBonus>();       
     }
 
     public void ResetBall()
@@ -37,7 +34,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-   private void SetTrajectory()
+    private void SetTrajectory()
     {
         _force = Vector2.zero;
         _force.x = Random.Range(-1f, 1f);
@@ -47,10 +44,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-
         if (collision.gameObject.tag == "Wall")
-        {
+        {            
             isWall++;
             if(isWall > 5)
             {
@@ -59,10 +54,10 @@ public class Ball : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Bricks" || collision.gameObject.tag == "Paddle")
         {
-            isWall = 1;
+            isWall = 1;            
         }
 
         if (collision.gameObject.tag == "Bricks") IsPaddle = false;
         else if(collision.gameObject.tag == "Paddle") IsPaddle = true;
-    }         
+    }  
 }

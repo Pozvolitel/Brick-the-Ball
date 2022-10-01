@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Bonus : MonoBehaviour
@@ -6,12 +5,13 @@ public class Bonus : MonoBehaviour
     [SerializeField] private GameObject _prefabBall;
     public Vector2 BallPosition;
     [SerializeField] private GameObject _prefabMagnitude;
-    private MagnitBonus _magnit;
-    [SerializeField] private GameObject _scalePrefab;
+    private MagnitBonus _magnit;    
     [SerializeField] private GameObject _flyPaddle;
+    private GameObject _paddle;
 
     private void Start()
     {
+        _paddle = GameObject.FindGameObjectWithTag("Paddle");
         _magnit = FindObjectOfType<MagnitBonus>();
     }
 
@@ -32,13 +32,20 @@ public class Bonus : MonoBehaviour
   
     private void ScalePadd()
     {
-        Instantiate(_scalePrefab);
+        if(_paddle.transform.localScale.x == 5)
+        {
+            _paddle.transform.localScale = new Vector2(10, 0.5f);
+        }
+        else if(_paddle.transform.localScale.x == 10)
+        {
+            _paddle.transform.localScale = new Vector2(5, 0.5f);
+        }
     }
     private void InstationPrefabMagnitude()
     {
         if (_magnit != null)
         {
-            _magnit.Timer = 20f;
+            _magnit.Timer = 10f;
         }
         else
         {

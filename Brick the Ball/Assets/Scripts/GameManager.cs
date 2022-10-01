@@ -1,39 +1,72 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
+[SerializeField]
 public class GameManager : MonoBehaviour
 {
+    public event System.Action<int> OnLivesChangedEvent;
+    public event System.Action<int> OnLevelChangedEvent;
     public Ball ball { get; private set; }
     public Paddle paddle { get; private set; }
     public Bricks[] bricks { get; private set; }
     [SerializeField] private GameObject _prefapBall;
 
-    public int Level = 1;
-    public int Lives = 3;
+    [SerializeField] private int _level;
+    [SerializeField] private int _lives;
+    private GameObject _timer;
+
+    public int Level => _level;
+    public int Lives => _lives;
+
+    public void AddLevel(int level)
+    {
+        _level += level;
+        OnLevelChangedEvent?.Invoke(_level);
+    }
+
+    public void AddLives(int lives)
+    {
+        _lives += lives;
+        OnLivesChangedEvent?.Invoke(_lives);
+    }
+
+    public void SetLevel(int level)
+    {
+        _level = level;
+        OnLevelChangedEvent?.Invoke(_level);
+    }
+
+    public void SetLives(int lives)
+    {
+        _lives = lives;
+        OnLivesChangedEvent?.Invoke(_lives);
+    }
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-
         SceneManager.sceneLoaded += OnLevelLoaded;
     }
 
     void Start()
     {
-        NewGame();
-    } 
+        SceneManager.LoadScene("StartScene");
+    }
 
-    private void NewGame()
+    public void NewGame(int LvL)
     {
-        this.Lives = 3;
-        
-        LoadLevel(1);
+        if (_lives >= 3)
+        {
+            _lives = 0;
+        }
+        this.AddLives(3);
+        LoadLevel(LvL);
     }
 
     private void LoadLevel(int Level)
     {
-        this.Level = Level;
+        this._level = Level;
         SceneManager.LoadScene("Level" + Level);        
     }
 
@@ -59,7 +92,7 @@ public class GameManager : MonoBehaviour
     {
         if (Cleared())
         {
-            LoadLevel(this.Level + 1);            
+            LoadLevel(this._level + 1);            
         }
     }
 
@@ -77,13 +110,13 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        NewGame();
+        NewGame(_level);
     }
 
     public void Miss()
-    {
-        this.Lives--;
-        
+    {        
+        AddLives(-1);
+
         if (Lives > 0)
         {
              ResetLevel();

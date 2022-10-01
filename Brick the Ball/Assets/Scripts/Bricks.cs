@@ -51,7 +51,7 @@ public class Bricks : MonoBehaviour
         if (this.health <= 0)
         {
             this.gameObject.SetActive(false);
-            if(RandomHit(80))
+            if(RandomHit(20))
             {
                 isBonus = true;
                 Instantiate(_prefabBonus, this.transform.position, Quaternion.identity);
