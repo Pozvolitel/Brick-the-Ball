@@ -15,5 +15,6 @@ public class MenuReset : MonoBehaviour
     private void ResetLvL()
     {
         SceneManager.LoadScene("Global");
+        Time.timeScale = 1f;
     }
 }

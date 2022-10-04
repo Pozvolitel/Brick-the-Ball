@@ -15,5 +15,6 @@ public class ResetLevel : MonoBehaviour
     private void ResetLvL()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 }

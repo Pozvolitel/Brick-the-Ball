@@ -9,18 +9,21 @@ public class Ball : MonoBehaviour
     private Vector2 _force;
     public bool IsPaddle;
     private MagnitBonus _magnit;
+    [SerializeField] private GameObject _spark;
+    [SerializeField] private AudioSource _bit;
      
     void Start()
     {
+        _bit = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody2D>();       
         ResetBall();
-        FindObjectOfType<MissZone>().BallObj.Add(gameObject);
+        FindObjectOfType<FindBall>().BallObj.Add(this);
         _magnit = FindObjectOfType<MagnitBonus>();       
     }
 
     public void ResetBall()
     {
-        if (FindObjectOfType<MissZone>().BallObj.Count <= 0)
+        if (FindObjectOfType<FindBall>().BallObj.Count <= 0)
         {
             transform.position = Vector2.zero;
             _rigidbody.velocity = Vector2.zero;
@@ -57,7 +60,16 @@ public class Ball : MonoBehaviour
             isWall = 1;            
         }
 
-        if (collision.gameObject.tag == "Bricks") IsPaddle = false;
-        else if(collision.gameObject.tag == "Paddle") IsPaddle = true;
+        if (collision.gameObject.tag == "Bricks")
+        {
+            Instantiate(_spark, transform.position, Quaternion.identity);
+            IsPaddle = false;
+        }
+        else if (collision.gameObject.tag == "Paddle") IsPaddle = true;
+
+        if(collision.gameObject)
+        {
+            _bit.Play();
+        }
     }  
 }

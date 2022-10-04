@@ -4,13 +4,15 @@ using UnityEngine.UI;
 public class Bricks : MonoBehaviour
 {
     public SpriteRenderer SpriteRend { get; private set; }
-    public Color[] states;
+    public Sprite[] states;
     public int health { get; private set; }
     public bool unbreakable;
     public int points = 100;
     [SerializeField] private GameObject _prefabBonus;
     private bool isBonus = false;
-    
+    [SerializeField] private GameObject _particle;
+    [SerializeField] private BoomScript _boomPlay;
+ 
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class Bricks : MonoBehaviour
     private void Start()
     {
         ResetBricks();
-        
+        _boomPlay = FindObjectOfType<BoomScript>();
     }
 
     public void ResetBricks()
@@ -30,7 +32,7 @@ public class Bricks : MonoBehaviour
         if (!this.unbreakable)
         {
             this.health = this.states.Length;
-            this.SpriteRend.color = this.states[this.health - 1];
+            this.SpriteRend.sprite = this.states[this.health - 1];
         }
     }
 
@@ -50,7 +52,10 @@ public class Bricks : MonoBehaviour
 
         if (this.health <= 0)
         {
+            _boomPlay.BoomPlay();
             this.gameObject.SetActive(false);
+            
+            Instantiate(_particle, gameObject.transform.position, Quaternion.identity);
             if(RandomHit(20))
             {
                 isBonus = true;
@@ -59,7 +64,7 @@ public class Bricks : MonoBehaviour
         }
         else
         {
-            this.SpriteRend.color = this.states[this.health - 1];
+            this.SpriteRend.sprite = this.states[this.health - 1];
         }
 
         FindObjectOfType<GameManager>().Hit(this);        
