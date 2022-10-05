@@ -8,6 +8,11 @@ public class Bonus : MonoBehaviour
     private MagnitBonus _magnit;    
     [SerializeField] private GameObject _flyPaddle;
     private GameObject _paddle;
+    [SerializeField] private AudioSource _prelesno;
+    [SerializeField] private AudioSource _malovato;
+    [SerializeField] private AudioSource _goodby;
+    [SerializeField] private AudioSource _viju;
+    [SerializeField] private AudioSource _neViju;
 
     private void Start()
     {
@@ -19,10 +24,25 @@ public class Bonus : MonoBehaviour
     {
         var random = Random.Range(1, 5);
 
-        if (random == 1) InstationPrefabBall();
-        else if (random == 2) InstationPrefabMagnitude();
-        else if (random == 3) ScalePadd();
-        else if (random == 4) flyPaddle();
+        if (random == 1)
+        {
+            _malovato.Play();
+            InstationPrefabBall();
+        }
+        else if (random == 2)
+        {
+            _prelesno.Play();
+            InstationPrefabMagnitude();
+        }
+        else if (random == 3)
+        {
+            ScalePadd();
+        }
+        else if (random == 4)
+        {
+            _goodby.Play();
+            flyPaddle();
+        }
     }
 
     private void flyPaddle()
@@ -34,10 +54,12 @@ public class Bonus : MonoBehaviour
     {
         if(_paddle.transform.localScale.x == 5)
         {
+            _viju.Play();
             _paddle.transform.localScale = new Vector2(10, 0.5f);
         }
         else if(_paddle.transform.localScale.x == 10)
         {
+            _neViju.Play();
             _paddle.transform.localScale = new Vector2(5, 0.5f);
         }
     }
@@ -69,11 +91,11 @@ public class Bonus : MonoBehaviour
         if(collision.transform.name == "Paddle")
         {
             RandomBonus();
-            Destroy(gameObject);
+            Destroy(gameObject, 3f);
         }
         else if(collision.transform.name == "WallDown")
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 3f);
         }
     }
 }

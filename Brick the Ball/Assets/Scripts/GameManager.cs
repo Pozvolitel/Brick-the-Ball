@@ -45,13 +45,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
         SceneManager.sceneLoaded += OnLevelLoaded;
     }
 
     void Start()
     {
-        SceneManager.LoadScene("StartScene");
+        //SceneManager.LoadScene("StartScene");
     }
 
     public void NewGame(int LvL)

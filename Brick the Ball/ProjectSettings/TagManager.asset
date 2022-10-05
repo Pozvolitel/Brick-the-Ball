@@ -11,6 +11,9 @@ TagManager:
   - Ball
   - FlyPaddle
   - Timer
+  - BoomPlay
+  - OhNo
+  - BricksFalse
   layers:
   - Default
   - TransparentFX

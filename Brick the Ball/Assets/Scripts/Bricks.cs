@@ -11,7 +11,7 @@ public class Bricks : MonoBehaviour
     [SerializeField] private GameObject _prefabBonus;
     private bool isBonus = false;
     [SerializeField] private GameObject _particle;
-    [SerializeField] private BoomScript _boomPlay;
+    [SerializeField] private AudioSource _boomPlay;
  
 
     private void Awake()
@@ -22,7 +22,7 @@ public class Bricks : MonoBehaviour
     private void Start()
     {
         ResetBricks();
-        _boomPlay = FindObjectOfType<BoomScript>();
+        _boomPlay = GameObject.FindGameObjectWithTag("BoomPlay").GetComponent<AudioSource>();
     }
 
     public void ResetBricks()
@@ -52,7 +52,7 @@ public class Bricks : MonoBehaviour
 
         if (this.health <= 0)
         {
-            _boomPlay.BoomPlay();
+            _boomPlay.Play();
             this.gameObject.SetActive(false);
             
             Instantiate(_particle, gameObject.transform.position, Quaternion.identity);

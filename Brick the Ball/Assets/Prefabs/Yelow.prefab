@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3607288127809086910}
   - component: {fileID: 4214110005729643494}
-  - component: {fileID: 4983786873844836021}
   - component: {fileID: 7365993110310986152}
+  - component: {fileID: 5134057225720214118}
   m_Layer: 0
   m_Name: Yelow
   m_TagString: Bricks
@@ -86,32 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4983786873844836021
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7939460300945807068}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &7365993110310986152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +107,36 @@ MonoBehaviour:
   _prefabBonus: {fileID: 8579353264709290988, guid: 89785513ab9693742b31da97906560e4, type: 3}
   _particle: {fileID: 3588770909074688152, guid: 57b2b7c71e9db2247b85ef078683c25b, type: 3}
   _boomPlay: {fileID: 0}
+--- !u!60 &5134057225720214118
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939460300945807068}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4010306, y: 0.4988013}
+      - {x: -0.3899103, y: 0.49594343}
+      - {x: -0.4997724, y: 0.37955654}
+      - {x: -0.50087535, y: -0.37602603}
+      - {x: -0.40242174, y: -0.4986695}
+      - {x: 0.39028987, y: -0.4920521}
+      - {x: 0.49977243, y: -0.38264352}
+      - {x: 0.49977243, y: 0.3927913}

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8320618878606598227}
   - component: {fileID: 8866717955575336459}
-  - component: {fileID: 314856665487549272}
   - component: {fileID: 95938853724664202}
+  - component: {fileID: 8081317404847250787}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Bricks
@@ -86,8 +86,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &314856665487549272
-BoxCollider2D:
+--- !u!114 &95938853724664202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3411985437759820593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7a3cfb3e7b08c4689438216a5226e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - {fileID: 21300000, guid: dc6c55292fd208940be78b42e036b2b4, type: 3}
+  unbreakable: 0
+  points: 100
+  _prefabBonus: {fileID: 8579353264709290988, guid: 89785513ab9693742b31da97906560e4, type: 3}
+  _particle: {fileID: 3588770909074688152, guid: 57b2b7c71e9db2247b85ef078683c25b, type: 3}
+  _boomPlay: {fileID: 0}
+--- !u!60 &8081317404847250787
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,25 +128,14 @@ BoxCollider2D:
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &95938853724664202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3411985437759820593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d7a3cfb3e7b08c4689438216a5226e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  states:
-  - {fileID: 21300000, guid: dc6c55292fd208940be78b42e036b2b4, type: 3}
-  unbreakable: 0
-  points: 100
-  _prefabBonus: {fileID: 8579353264709290988, guid: 89785513ab9693742b31da97906560e4, type: 3}
-  _particle: {fileID: 3588770909074688152, guid: 57b2b7c71e9db2247b85ef078683c25b, type: 3}
-  _boomPlay: {fileID: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.4574146, y: 0.49358186}
+      - {x: -0.462459, y: 0.4916015}
+      - {x: -0.49902692, y: 0.41458026}
+      - {x: -0.5001528, y: -0.41160315}
+      - {x: -0.4533971, y: -0.4888934}
+      - {x: 0.43763375, y: -0.4888932}
+      - {x: 0.4382253, y: -0.4859163}
+      - {x: 0.49877444, y: -0.39065915}
+      - {x: 0.50240475, y: 0.40782452}

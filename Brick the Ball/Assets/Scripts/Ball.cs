@@ -48,7 +48,8 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
-        {            
+        {
+            _bit.Play();
             isWall++;
             if(isWall > 5)
             {
@@ -57,7 +58,11 @@ public class Ball : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Bricks" || collision.gameObject.tag == "Paddle")
         {
-            isWall = 1;            
+            if (gameObject != null && _bit != null)
+            {
+                isWall = 1;
+                _bit.Play();
+            }
         }
 
         if (collision.gameObject.tag == "Bricks")
@@ -65,11 +70,7 @@ public class Ball : MonoBehaviour
             Instantiate(_spark, transform.position, Quaternion.identity);
             IsPaddle = false;
         }
-        else if (collision.gameObject.tag == "Paddle") IsPaddle = true;
-
-        if(collision.gameObject)
-        {
-            _bit.Play();
-        }
+        else if (collision.gameObject.tag == "BricksFalse") IsPaddle = false;
+        else if (collision.gameObject.tag == "Paddle") IsPaddle = true;       
     }  
 }
