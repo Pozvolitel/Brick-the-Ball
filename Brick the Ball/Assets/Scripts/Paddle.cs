@@ -21,11 +21,7 @@ public class Paddle : MonoBehaviour
         else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) && transform.position.x <= 15.28f)
         {
             transform.position = transform.position + new Vector3(1, 0, 0) * _speed * Time.deltaTime;
-        }
-        else
-        {
-            _direction = Vector2.zero;
-        }       
+        }      
     } 
 
     private void OnCollisionEnter2D(Collision2D collision)

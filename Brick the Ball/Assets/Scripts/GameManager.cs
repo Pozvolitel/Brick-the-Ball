@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 [SerializeField]
 public class GameManager : MonoBehaviour
@@ -46,11 +45,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SceneManager.sceneLoaded += OnLevelLoaded;
-    }
-
-    void Start()
-    {
-        //SceneManager.LoadScene("StartScene");
     }
 
     public void NewGame(int LvL)

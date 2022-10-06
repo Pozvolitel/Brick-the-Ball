@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyPaddle : MonoBehaviour
 {
     [SerializeField] private GameObject _paddle;
     private Transform _transformPaddle;
-    [SerializeField] private GameObject _flyPaddle;
-    
+    [SerializeField] private GameObject _flyPaddle;    
 
     private void Start()
     {

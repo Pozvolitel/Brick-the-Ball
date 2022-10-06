@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class MissZone : MonoBehaviour
 {    
-    public event System.Action<Ball> OnBallChangedEvent;
-   
+    public event System.Action<Ball> OnBallChangedEvent;   
     
     public void RemoveBall(Ball ball)
     {

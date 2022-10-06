@@ -7,12 +7,10 @@ public class Bricks : MonoBehaviour
     public Sprite[] states;
     public int health { get; private set; }
     public bool unbreakable;
-    public int points = 100;
     [SerializeField] private GameObject _prefabBonus;
     private bool isBonus = false;
     [SerializeField] private GameObject _particle;
-    [SerializeField] private AudioSource _boomPlay;
- 
+    [SerializeField] private AudioSource _boomPlay; 
 
     private void Awake()
     {
@@ -42,6 +40,7 @@ public class Bricks : MonoBehaviour
         if (value > random) return true;
         else return false;
     }
+
     private void Hit()
     {
         if(this.unbreakable)

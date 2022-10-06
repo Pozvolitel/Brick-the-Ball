@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class Canvas : MonoBehaviour
 {
-    [SerializeField] private Image _lives;
-    [SerializeField] public Image _level;
+    private Image _lives;
+    private Image _level;
     private Text _textLives;
-    private Text _textLevel;    
-    [SerializeField] private GameManager _gameManager;
+    private Text _textLevel;
+    private GameManager _gameManager;
 
     void Start()
     {

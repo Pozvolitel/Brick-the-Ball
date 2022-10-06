@@ -63,6 +63,7 @@ public class Bonus : MonoBehaviour
             _paddle.transform.localScale = new Vector2(5, 0.5f);
         }
     }
+
     private void InstationPrefabMagnitude()
     {
         if (_magnit != null)

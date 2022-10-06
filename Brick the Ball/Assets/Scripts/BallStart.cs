@@ -3,7 +3,7 @@ using UnityEngine;
 [SerializeField]
 public class BallStart : MonoBehaviour
 {
-    public Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody;
     [SerializeField] private float _speed = 300f;    
     private Vector2 _force;    
    
